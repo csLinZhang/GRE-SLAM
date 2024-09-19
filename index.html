@@ -1,90 +1,180 @@
-
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Language" content="zh-cn">
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>GRE-SLAM</title>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="GRE-SLAM: 6-DoF Pure Event-Based SLAM with Semi-Dense Depth Recovery Assisted Bundle Adjustment">
+  <meta name="keywords" content="Event-Based SLAM, Bundle Adjustment, Semi-Dense Depth Reconstruction">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GRE-SLAM: 6-DoF Pure Event-Based SLAM with Semi-Dense Depth Recovery Assisted Bundle Adjustment</title>
 
-<style>
-<!--
-div.Section1
-	{page:Section1;}
- table.MsoNormalTable
-	{mso-style-parent:"";
-	font-size:10.0pt;
-	font-family:"Times New Roman","serif"}
-table.TableGrid
-	{border:1.0pt solid black;
-	font-size:10.0pt;
-	font-family:"Times New Roman";
-	}
--->
-</style>
-<meta http-equiv="Content-Language" content="zh-cn">
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>WESNet</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-<style>
-<!--
-div.Section1
-	{page:Section1;}
- table.MsoNormalTable
-	{mso-style-parent:"";
-	font-size:10.0pt;
-	font-family:"Times New Roman","serif"}
-table.TableGrid
-	{border:1.0pt solid black;
-	font-size:10.0pt;
-	font-family:"Times New Roman";
-	}
--->
-</style>
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
-
-<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
-
 <body>
 
-<table class="MsoNormalTable" border="0" cellpadding="0" width="1217" id="table3" height="35">
-	<tr>
-		<td valign="top" style="width: 1211px; height: 31px; padding: .75pt" align="left">
-		<p class="text">
-		<span lang="en-us"><font face="Calibri" size="5" color="#0000FF">
-		<b> GRE-SLAM: 6-DoF Pure Event-Based SLAM with Semi-Dense Depth Recovery Assisted Bundle Adjustment</b></font></span><p class="text">
-		<span lang="en-us"><font face="Calibri" size="4" color="#0000FF">
-		Yang Chen<sup>1</sup>,&nbsp;
-		Lin Zhang<sup>1</sup>
-		</span></font><p class="text"></p>
-		<span lang="en-us">
-		<font face="Calibri" size="4" color="#0000FF"><sup>1</sup>School of Software Engineering, Tongji University, Shanghai, China</font></span><p class="text">
-	</tr>
-	</table>
-<hr>
-<p><span lang="en-us"><b><font face="Calibri" size="5">Introduction</font></b></span></p>
-<p>
-<span style="font-size: 13pt; font-family: Calibri; color: windowtext" lang="EN-US">
-This is the website for our paper &quot; <b>GRE-SLAM: 6-DoF Pure Event-Based SLAM with Semi-Dense Depth Recovery Assisted Bundle Adjustment</b><span style="color: #000000"> 
-</span></a>&quot;. We propose <b>first 6-DoF pure event-based SLAM system equipped with back-end global optimization</b>, named GRE-SLAM (Globally Refined Event-based SLAM). For robustness and accuracy, we innovate both the front-end and the back-end of this system. First, <b>motion compensation</b> and the direct method are combined in the front-end to better align the event data, providing a robust pose estimation for global optimization. Second, in the back-end, an <b>adaptive semi-dense depth recovery module</b> is introduced to make full utilization of all historical maps and poses respectively to support effective BA. Comprehensive experiments on real-world datasets demonstrate that our method can produce <b>high-accuracy pose estimation</b> results as well as recover a <b>semi-dense depth map</b> for each Image of Warped Events (IWE).</span></p>
-<hr>
-<p><span lang="en-us"><b><font face="Calibri" size="5">Framework Overview</font></b></span></p>
-<p>
-<img border="0" src="pipeline.png" width="918" height="404"></p>
-<hr>
-<p><span lang="en-us"><b><font face="Calibri" size="5">Source Codes</font></b></span></p>
-<p>
-<span lang="en-us"><font face="Calibri" style="font-size: 13pt"> 
-<a href="https://github.com/dokidoki-yo/WESNet">Code of GRE-SLAM</a></font></span></p>
-<p>
-<p>
-<span lang="en-us"><font face="Calibri" style="font-size: 13pt">Note: all these 
-codes related to GRE-SLAM are implemented by C++, ROS-Melodic (Ubuntu18.04) and we run them on a desktop with a CPU model of AMD Ryzen 9 5900X 12-Core Processor. </font></span></p>
-<hr>
-<p><span lang="en-us"><b><font face="Calibri" size="5">Demo Videos</font></b></span></p>
-<p>
-<span lang="en-us"><font face="Calibri" style="font-size: 13pt">The following is 
-a demo video demonstrating the performance of our GRE-SLAM in pose estimation and mapping. </font></span></p>
-<video src="video1_compress.mp4" width="600" height="450" controls preload></video>
-<hr>
-<p align="justify"><font face="Calibri">Last update: <span lang="en-us">Sep. 11,
-</span>202<span lang="en-us">4</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></p>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">GRE-SLAM: 6-DoF Pure Event-Based SLAM with Semi-Dense Depth Recovery Assisted Bundle Adjustment</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Yang Chen,</span>
+            <span class="author-block">
+              <a href="https://cslinzhang.github.io/home/">Lin Zhang</a></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">School of Software Engineering, Tongji University </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/dokidoki-yo/GRE-SLAM"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/GRE-SLAM_video.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        Introduction and performance of GRE-SLAM in real-world scenes.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Paper Overview. -->
+    <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3">Overview</h2>
+    </div>
+    <div class="column columns is-centered has-text-centered">
+      <img src="./static/images/pipeline.png"
+      class="interpolation-image"
+      alt="Interpolate start reference image."/>
+    </div>
+    <h3><p>
+      Overview of GRE-SLAM. We propose the first 6-DoF pure event-based SLAM system equipped with back-end global optimization, named GRE-SLAM (Globally Refined Event-based SLAM). For robustness and accuracy, first, 6-DoF motion compensation is introduced in the front-end to prepare sharp-edged event frames and a favorable initialization pose, mitigating unstable optimization during event registration brought by sparsity and noise of events. Second, a novel adaptive semi-dense depth recovery algorithm enriches sparse depths corresponding to the front-end’s short-term events without additional sensors, helping establish long-term edge alignment constraints to support global BA in the back-end. Comprehensive experiments on real-world datasets demonstrate that our method can produce high-accuracy pose estimation results as well as recover a semi-dense depth map for each Image of Warped Events (IWE).
+    </p></h3>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Related Links. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <!-- <p>
+            The dataset processing can be referred to <a href="https://github.com/lijx10/DeepI2P">DeepI2P</a>.
+          </p> -->
+          <p>
+            We thank the authors of <a href="https://github.com/uzh-rpg/rpg_dvs_evo_open">EVO</a> for their public code.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <div class="content">
+          <p>
+            The template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
